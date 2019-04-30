@@ -11,7 +11,6 @@
 // +----------------------------------------------------------------------
 
 use think\Env;
-
 return [
     // 数据库类型
     'type'            => Env::get('database.type', 'mysql'),
@@ -22,7 +21,7 @@ return [
     // 用户名
     'username'        => Env::get('database.username', 'root'),
     // 密码
-    'password'        => Env::get('database.password', ''),
+    'password'        => Env::get('database.password', 'Hopebx159'),
     // 端口
     'hostport'        => Env::get('database.hostport', ''),
     // 连接dsn
