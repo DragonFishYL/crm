@@ -18,7 +18,7 @@ return [
     // 应用命名空间
     'app_namespace'          => 'app',
     // 应用调试模式
-    'app_debug'              => Env::get('app.debug', false),
+    'app_debug'              => Env::get('app.debug', true),
     // 应用Trace
     'app_trace'              => Env::get('app.trace', false),
     // 应用模式状态
@@ -274,6 +274,6 @@ return [
         //版本号
         'version'             => '1.0.0.20190410_beta',
         //API接口地址
-        'api_url'             => 'https://api.fastadmin.net',
+        'api_url'             => 'http://testcrm.superdoctor.cn',
     ],
 ];
