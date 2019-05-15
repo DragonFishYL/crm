@@ -63,7 +63,6 @@ class Group extends Backend
     public function index()
     {
         if ($this->request->isAjax()) {
-            echo 1;die;
             $list = AuthGroup::all(array_keys($this->groupdata));
             $list = collection($list)->toArray();
             $groupList = [];
@@ -79,7 +78,7 @@ class Group extends Backend
             }
             $total = count($list);
             $result = array("total" => $total, "rows" => $list);
-
+            print_r($result);die;
             return json($result);
         }
         return $this->view->fetch();
