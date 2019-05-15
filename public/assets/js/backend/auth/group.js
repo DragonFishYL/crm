@@ -1,4 +1,4 @@
-define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'jstree'], function ($, undefined, Backend, Table, Form, undefined) {
+define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'jstree','selectpage'], function ($, undefined, Backend, Table, Form, undefined) {
     //读取选中的条目
     $.jstree.core.prototype.get_all_checked = function (full) {
         var obj = this.get_selected(), i, j;
@@ -15,6 +15,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'jstree'], function (
             return this.get_node(i);
         }, this)) : obj;
     };
+    var tagDta;
     var Controller = {
         index: function () {
             // 初始化表格参数配置
@@ -74,6 +75,16 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'jstree'], function (
         },
         edit: function () {
             Controller.api.bindevent();
+                $('#selectPage').selectPage({
+                    keyField : 'id',
+                    data : 'auth/group/seldepartment',
+                    eAjaxSuccess: function (d) {
+                        var result;
+                        if (d) result = d;
+                        else result = undefined;
+                        return result;
+                    }
+                });
         },
         api: {
             bindevent: function () {
