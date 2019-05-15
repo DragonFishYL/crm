@@ -3,6 +3,7 @@
 namespace app\admin\controller\auth;
 
 use app\admin\model\AuthGroup;
+use app\admin\model\Department;
 use app\common\controller\Backend;
 use fast\Tree;
 
@@ -62,6 +63,7 @@ class Group extends Backend
     public function index()
     {
         if ($this->request->isAjax()) {
+            echo 1;die;
             $list = AuthGroup::all(array_keys($this->groupdata));
             $list = collection($list)->toArray();
             $groupList = [];
@@ -155,6 +157,7 @@ class Group extends Backend
             $this->error();
             return;
         }
+      
         $this->view->assign("row", $row);
         return $this->view->fetch();
     }
@@ -287,5 +290,21 @@ class Group extends Backend
         } else {
             $this->error(__('Group not found'));
         }
+    }
+    //查询部门
+    public function seldepartment() {
+        //主键
+        $primarykey = $this->request->request("keyField");
+        //主键值
+        $primaryvalue = $this->request->request("keyValue");
+        //如果有primaryvalue,说明当前是初始化传值
+        if ($primaryvalue !== null) {
+            $where = [$primarykey => ['in', $primaryvalue]];
+        } else {
+            $where = '';
+        }
+        $selArr = new Department;
+        $resData = collection($selArr->where($where)->select())->toArray();
+        return json(['list' => $resData,'totalRow'=>'10']);
     }
 }
