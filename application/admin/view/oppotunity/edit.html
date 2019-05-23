@@ -1,0 +1,82 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" class="form-control" name="row[name]" type="text" value="{$row.name}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Costomerid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-costomerid" data-rule="required" class="form-control" name="row[costomerid]" type="number" value="{$row.costomerid}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Attributes')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-attributes" data-rule="required" class="form-control" name="row[attributes]" type="number" value="{$row.attributes}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Mechanism')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-mechanism" data-rule="required" class="form-control" name="row[mechanism]" type="number" value="{$row.mechanism}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Stage')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-stage" data-rule="required" class="form-control" name="row[stage]" type="number" value="{$row.stage}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Buytype')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-buytype" data-rule="required" class="form-control" name="row[buytype]" type="number" value="{$row.buytype}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-status" data-rule="required" class="form-control" name="row[status]" type="number" value="{$row.status}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Cid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cid" data-rule="required" class="form-control" name="row[cid]" type="number" value="{$row.cid}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-sid" data-rule="required" class="form-control" name="row[sid]" type="number" value="{$row.sid}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Eid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-eid" data-rule="required" class="form-control" name="row[eid]" type="number" value="{$row.eid}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Remark')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-remark" class="form-control" name="row[remark]" type="text" value="{$row.remark}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('State')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-state" data-rule="required" class="form-control" name="row[state]" type="number" value="{$row.state}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

@@ -21,6 +21,14 @@ class Customer extends Backend
         $this->request->filter(['strip_tags']);
         $this->industry = model('\app\admin\model\library\Industry');//实例化模型对象行业库
         $this->qcrllcore = model('\app\admin\model\QCellcore');//实例化归属地
+        $this->personal = model('\app\admin\model\other\Personalm');//实例化个人渠道
+        $this->insurance = model('\app\admin\model\other\Insurancem');//实例化保险渠道
+        $this->enterprise = model('\app\admin\model\other\Enterprisem');//实例化企业渠道
+        $this->bank = model('\app\admin\model\other\Blankm');//实例化银行渠道
+        $this->tel = model('\app\admin\model\other\Telm');//实例化市场渠道
+        $this->level = model('\app\admin\model\other\Levem');//实例化客户级别
+        $this->hos = model('\app\admin\model\library\Hospitalm');//实例化医院
+        $this->disease = model('\app\admin\model\library\Diseasem');//实例化疾病库
     }
     /**
      * 客户管理首页
@@ -56,6 +64,12 @@ class Customer extends Backend
     {
         //查询行业库
         $IndustryData = collection($this->industry->select())->toArray();
+        //查询疾病库一级分类
+        $diseaseData = collection($this->disease->where('level','1')->select())->toArray();
+        //查询医院库
+        $hosData = collection($this->hos->select())->toArray();
+        //查询客户级别
+        $LevelData = collection($this->level->select())->toArray();
         if ($this->request->isPost()) {
             $params = $this->request->post("row/a", [], 'strip_tags');
             $params['rules'] = explode(',', $params['rules']);
@@ -73,6 +87,9 @@ class Customer extends Backend
             }
             $this->error();
         }
+        $this->assign('hosData',$hosData);
+        $this->assign('LevelData',$LevelData);
+        $this->assign('diseaseData',$diseaseData);
         $this->assign('IndustryData',$IndustryData);
         return $this->view->fetch();
     }
@@ -169,5 +186,38 @@ class Customer extends Backend
         $phoneData = $this->qcrllcore->where('Mobile',$phone)->find()->toArray();
         return  $phoneData;
     }
-
+    /**
+     * 查询记录类型
+     */
+    public function selRecord() {
+        $fid = $this->request->get('id');
+        if($fid == '1') {
+            $resData = collection($this->tel->where('fid',$fid)->select())->toArray();
+        }else if($fid == '2') {
+            $resData = collection($this->personal->where('fid',$fid)->select())->toArray();
+        }else if($fid == '3') {
+            $resData = collection($this->enterprise->where('fid',$fid)->select())->toArray();
+        }else if($fid == '4') {
+            $resData = collection($this->insurance->where('fid',$fid)->select())->toArray();
+        }else if($fid == '5') {
+            $resData = collection($this->hos->select())->toArray();
+        }else if($fid == '7') {
+            $resData = collection($this->bank->where('fid',$fid)->select())->toArray();
+        }
+        return $resData;
+    }
+    /**
+     * 查询疾病小类、名称
+     */
+    public function diseaseSel() {
+        $type = $this->request->post('type');
+        $id = $this->request->post('id');
+        if($type == '1') {
+            $diseaseSecond = collection($this->disease->where('fid',$id)->select())->toArray();
+            return $diseaseSecond;
+        }else if($type == '2') {
+            $diseaseName = collection($this->disease->where('fid',$id)->select())->toArray();
+            return $diseaseName;
+        }
+    }
 }

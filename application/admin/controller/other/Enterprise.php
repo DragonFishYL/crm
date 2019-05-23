@@ -5,23 +5,23 @@ namespace app\admin\controller\other;
 use app\common\controller\Backend;
 
 /**
- * 业务机会来源信息管理（记录类型）
+ * 记录类型：企业渠道
  *
  * @icon fa fa-circle-o
  */
-class Record extends Backend
+class Enterprise extends Backend
 {
     
     /**
-     * Recordm模型对象
-     * @var \app\admin\model\other\Recordm
+     * Enterprisem模型对象
+     * @var \app\admin\model\other\Enterprisem
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\admin\model\other\Recordm;
+        $this->model = new \app\admin\model\other\Enterprisem;
 
     }
     
@@ -42,11 +42,6 @@ class Record extends Backend
         }
         return $this->view->fetch();
     }
-    /**
-     * 查询父级记录类型
-     */
-    public function ParentLevel() {
-        $resData = collection($this->model->where('fid','0')->select())->toArray();
-        return json(['list' => $resData]);
-    }
+    
+
 }

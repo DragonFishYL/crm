@@ -78,7 +78,6 @@ class Group extends Backend
             }
             $total = count($list);
             $result = array("total" => $total, "rows" => $list);
-            print_r($result);die;
             return json($result);
         }
         return $this->view->fetch();

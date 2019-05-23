@@ -1,0 +1,311 @@
+<style>
+	.layui-form{padding-bottom: 20%;}
+	.row-button{text-align:center;margin-top:20px;}
+	.layui-form-label{width: 100%!important;text-align: left!important;padding-left: 0!important;font-size: 15px!important;margin-bottom: 0!important;}
+	.layui-select-title{margin-top: 38px;}
+	.layui-input-block{margin-left:0px;}
+	.row-oppotunity,.row-oppotunity-person,.row-oppotunity-family,.family-contract-button,.family-oppotunity,.row-create-beta{display:none;}
+	.my-oppotunity-list,.row-oppotunity-attribute,.row-oppotunity-person,.row-oppotunity-family,.row-create-beta{border:1px dashed #bdbdbd;margin-top:20px;padding:5px;background:#fffeef;}
+</style>
+<div class="wrapper">
+    <div class="container admin_con">
+		<div class="row">
+			<span class="layui-breadcrumb" lay-separator=">">
+				<a href="{:url('oppotunity/index')}" class="btn-addtabs btn-success" title="客户管理" style="background-color: unset">客户管理</a>
+				<a><cite>创建业务机会</cite></a>
+			</span>
+		</div>
+		<div class="row my-oppotunity-list">
+			<table class='layui-table'>
+				<thead>
+					<tr>
+						<td>业务机会名称</td>
+						<td>版本名称</td>
+						<td>产品</td>
+						<td>产品金额</td>
+						<td>合同编号</td>
+						<td>培育阶段</td>
+						<td>所有人</td>
+						<td>创建时间</td>
+						<td>更新时间</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>余明阳-东京女子医科大-诊断小包</td>
+						<td>余明阳家族[家庭版]</td>
+						<td>诊断小包</td>
+						<td>98000.00</td>
+						<td>暂无</td>
+						<td>培育阶段</td>
+						<td>李鑫</td>
+						<td>2019-4-26 16:46</td>
+						<td>2019-4-28 19:26</td>
+					</tr>
+					<tr>
+						<td>李惠英-肺癌-美国疾病诊断小包干A-专业版</td>
+						<td>李惠英家族[家庭版]</td>
+						<td>诊断小包干A</td>
+						<td>98000.00</td>
+						<td>HC-2019041203660</td>
+						<td>合同谈判</td>
+						<td>李鑫</td>
+						<td>2019-4-26 16:46</td>
+						<td>2019-4-28 19:26</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="row row-button my-oppotunity-list-button">
+			<button type="button" class="layui-btn layui-btn-primary">取消创建</button>
+			<button type="button" class="layui-btn layui-btn-normal continue-to-create">继续创建</button>
+		</div>
+		<div class="row row-oppotunity">
+			<form class="layui-form" action="{:url('oppotunity/actionAddOppotunity')}" lay-filter="add-form" method="post">
+				<input type="hidden" name="type" value="" id="createOppotunity">
+				<div class="layui-row row-oppotunity-attribute">
+					<div class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg6">
+						<label class="layui-form-label">业务机会性质</label>
+						<div class="layui-input-block">
+							<select name="oppotunity[attributes]" lay-verify="required" lay-filter="attribute">
+								<option value="0">请选择</option>
+								<option value="1">个人版</option>
+								<option value="2">家庭版</option>
+								<option value="3">企业版</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<!-- 选择家庭版/企业版 业务机会 -->
+				<div class="layui-row row-oppotunity-family">
+					<div class="layui-row layui-col-space10">
+						<div class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg6 family-attribute">
+							<label class="layui-form-label">家庭版/企业版</label>
+							<div class="layui-input-block">
+								<select name="familybusiness" lay-verify="required" lay-search lay-filter="familybusiness">
+									<option value="0">请选择</option>
+									<option value="1">我要新建</option>
+									<optgroup label="家庭版-相关[2019-05-26 4:20]">
+										<option value="2">蜡笔小新[黎明-王朗]</option>
+									</optgroup>
+									<optgroup label="企业版-相关[2019-05-27 16:33]">
+										<option value="3">力帆集团[阿里-小腾]</option>
+									</optgroup>
+									<optgroup label="企业版[2019-05-27 16:33]">
+										<option value="4">格力集团[格力-小白]</option>
+									</optgroup>
+								</select>
+							</div>
+						</div>
+						<div class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg6 family-oppotunity">
+							<label class="layui-form-label">业务机会</label>
+							<div class="layui-input-block">
+								<select name="familyoppotunity" lay-verify="required" lay-filter="familyoppotunity">
+									<option value="0">请选择</option>
+									<option value="1">我要新建</option>
+									<optgroup label="余明阳-东京女子医科大-诊断小包[2019-05-26 4:20]">
+										<option value="2">李鑫[黎明-王朗]-合同谈判</option>
+									</optgroup>
+									<optgroup label="李惠英-肺癌-美国疾病诊断小包干A-专业版[2019-05-27 16:33]">
+										<option value="3">李鑫[阿里-小腾]-合同谈判</option>
+									</optgroup>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="layui-row row-oppotunity-contract family-contract-button">
+						<label class="layui-form-label"><span style="color:red;">选择以下</span>  合同</label>
+						<table class='layui-table'>
+							<thead>
+								<tr>
+									<td>操作</td>
+									<td>合同名称</td>
+									<td>合同编号</td>
+									<td>产品</td>
+									<td>产品金额</td>
+									<td>合同编号</td>
+									<td>状态</td>
+									<td>所有人</td>
+									<td>创建时间</td>
+									<td>更新时间</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="radio" name="like[write]" title=""></td>
+									<td>余明阳-东京女子医科大-诊断小包</td>
+									<td>余明阳家族[家庭版]</td>
+									<td>诊断小包</td>
+									<td>98000.00</td>
+									<td>暂无</td>
+									<td>培育阶段</td>
+									<td>李鑫</td>
+									<td>2019-4-26 16:46</td>
+									<td>2019-4-28 19:26</td>
+								</tr>
+								<tr>
+									<td><input type="radio" name="like[write]" title=""></td>
+									<td>李惠英-肺癌-美国疾病诊断小包干A-专业版</td>
+									<td>李惠英家族[家庭版]</td>
+									<td>诊断小包干A</td>
+									<td>98000.00</td>
+									<td>HC-2019041203660</td>
+									<td>合同谈判</td>
+									<td>李鑫</td>
+									<td>2019-4-26 16:46</td>
+									<td>2019-4-28 19:26</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="row family-contract-button" style="border-bottom:1px dashed #bdbdbd;width: 100%;margin-left: 0px;padding: 5px;">
+						<span style="color:red;">或者</span>  <button type="button" class="layui-btn layui-btn-primary continue-to-create" data-toggle="modal" data-target="#create-contrct-modal">新建合同</button>
+					</div>
+					<div class="row row-button  family-contract-button">
+						<button type="button" class="layui-btn layui-btn-primary">取消创建</button>
+						<button type="button" class="layui-btn layui-btn-normal continue-to-create">确定并保存   <span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="right" title="" data-original-title="点击该按钮说明已选择合同"></span></button>
+					</div>
+					<div class="modal fade" id="create-contrct-modal">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										<span>&times;</span>
+										<span class="sr-only">关闭弹窗</span>
+									</button>
+									<h4 class="modal-title" id="create-contrct-modalLable">创建草稿合同</h4>
+								</div>
+								<div class="modal-body">
+									<div class="row" style="margin-left:0px;">
+										<div class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg6">
+											<label class="layui-form-label">咨询项目</label>
+											<div class="layui-input-block">
+												<select name="project" lay-verify="required" lay-filter="project">
+													<option value="0">请选择</option>
+													<option value="1">医疗</option>
+													<option value="2">体检</option>
+													<option value="3">医疗和体检</option>
+													<option value="4">远程诊断</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+									<button type="button" class="btn btn-primary">确定并保存</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 新建唯一的家庭版/企业版 -->
+				<div class="layui-row row-create-beta">
+					<div class="layui-row layui-col-space10">
+						<div class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg6">
+							<label class="layui-form-label">版本唯一名称</label>
+							<div class="layui-input-block">
+								<select name="betaname" lay-verify="required" lay-search lay-filter="betaname">
+									<option value="0">请选择</option>
+									<option value="1">力帆集团</option>
+									<option value="2">格力国际</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg6">
+							<label class="layui-form-label">备注</label>
+							<div class="layui-input-block">
+								<textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 个人版业务机会 -->
+				<div class="layui-row row-oppotunity-person">
+					<div class="layui-row layui-col-space10">
+						<div class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg6">
+							<label class="layui-form-label">业务机会名称</label>
+							<div class="layui-input-block">
+								<input type="text" name="oppotunity[name]" required readonly lay-verify="required"  autocomplete="off" class="layui-input" />
+							</div>
+						</div>
+						<div class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg6">
+							<label class="layui-form-label">所属机构</label>
+							<div class="layui-input-block">
+								<select name="oppotunity[mechanism]" lay-verify="required">
+									<option value="0">请选择</option>
+									<option value="1">北京</option>
+									<option value="2">上海</option>
+									<option value="3">深圳</option>
+									<option value="4">成都</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="layui-row layui-col-space10">
+						<div class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg6">
+							<label class="layui-form-label">采购方式</label>
+							<div class="layui-input-block">
+								<select name="oppotunity[buytype]" lay-verify="required">
+									<option value="0">请选择</option>
+									<option value="1">集团采购</option>
+									<option value="2">框架协议</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg6">
+							<label class="layui-form-label">跟进阶段</label>
+							<div class="layui-input-block">
+								<select name="oppotunity[stage]" lay-verify="required" lay-filter="stage">
+									<option value="0">请选择</option>
+									<option value="1">初步沟通</option>
+									<option value="2">培育阶段</option>
+									<option value="3">获得病例</option>
+									<option value="4">需求确认</option>
+									<option value="5">方案报价</option>
+									<option value="6">方案汇报</option>
+									<option value="7">方案确认</option>
+									<option value="8">合同谈判</option>
+									<option value="9">已结束并赢得客户</option>
+									<option value="10">赢单</option>
+									<option value="11">已结束并丢失客户</option>
+									<option value="12">丢单</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="layui-row layui-col-space10">
+						<div class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg6">
+							<label class="layui-form-label">产品</label>
+							<div class="layui-input-block">
+								<select name="product" lay-verify="required" lay-search>
+									<option value="0">请选择</option>
+									{foreach $product as $p}
+										<option value="{$p.id}">{$p.name}[￥{$p.price}]</option>
+									{/foreach}
+								</select>
+							</div>
+						</div>
+						<div class="layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg6 consaultProject" style="display:none;">
+							<label class="layui-form-label">咨询项目</label>
+							<div class="layui-input-block">
+								<select name="consult" lay-verify="required">
+									<option value="0">请选择</option>
+									<option value="1">医疗</option>
+									<option value="2">体检</option>
+									<option value="3">医疗和体检</option>
+									<option value="4">远程诊断</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row row-button">
+						<button type="button" class="layui-btn layui-btn-primary">取消创建</button>
+						<button type="submit" class="layui-btn layui-btn-normal btn-create-person">确定创建</button>
+					</div>
+				</div>
+			</form>
+		</div>
+    </div>
+</div>
+

@@ -5,23 +5,23 @@ namespace app\admin\controller\other;
 use app\common\controller\Backend;
 
 /**
- * 业务机会来源信息管理（记录类型）
+ * 记录类型：保险渠道
  *
  * @icon fa fa-circle-o
  */
-class Record extends Backend
+class Insurance extends Backend
 {
     
     /**
-     * Recordm模型对象
-     * @var \app\admin\model\other\Recordm
+     * Insurancem模型对象
+     * @var \app\admin\model\other\Insurancem
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\admin\model\other\Recordm;
+        $this->model = new \app\admin\model\other\Insurancem;
 
     }
     
@@ -42,11 +42,6 @@ class Record extends Backend
         }
         return $this->view->fetch();
     }
-    /**
-     * 查询父级记录类型
-     */
-    public function ParentLevel() {
-        $resData = collection($this->model->where('fid','0')->select())->toArray();
-        return json(['list' => $resData]);
-    }
+    
+
 }

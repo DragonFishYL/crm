@@ -1,27 +1,3 @@
-<style>
-    .shortcut-navigation{width: 10%;float: left;position: fixed;-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);}
-    .customer-form-box{width: 88%;margin-left: 12%;float: left;}
-    .shortcut-navigation-sp{font-size: 18px;color: #333;display: block;margin: 15px;padding-bottom: 10px;border-bottom: 1px solid #dcdcdc}
-    .customer-form-nav{margin-top: 25px;}
-    .shortcut-navigation ul{overflow: hidden;padding: 0 15px;}
-    .shortcut-navigation ul li{font-size: 14px;color: #666;padding-bottom: 15px;}
-    .shortcut-navigation ul li a:hover{color: #18bc9c}
-    .a-lick{color: #18bc9c}
-    .customer-form-com{margin-bottom: 25px;-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);padding: 15px;overflow: -webkit-paged-y;}
-    .customer-form-com .p1{font-size: 16px;color: #333;padding: 5px 0;border-bottom: 1px solid #dcdcdc;margin-bottom: 10px;}
-    .customer-form-com label{width: 100%!important;text-align: left!important;padding-left: 0!important;font-size: 15px!important;margin-bottom: 0!important}
-    .customer-form-com .layui-input-block{margin-left: 0!important}
-    .customer-form-inp{width: 48%;float: left;clear: none}
-    .customer-form-inp-right{float: right;}
-    .layui-form-select dl{top:80px!important}
-    .layui-form-select .layui-edge{top: 76%!important;}
-    .contacts—more{text-align: center;padding: 20px 0;clear: both;}
-    .contacts—more a{color: #333;}
-    .layui-form-select dl{height: min-content}
-    .Physical-box{display: none;}
-</style>
 <div class="wrapper">
     <div class="container admin_con">
             <div class="row">
@@ -54,13 +30,13 @@
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">客户姓名</label>
                                             <div class="layui-input-block">
-                                                <input type="text" name="row[customer_name]" required  lay-verify="required" placeholder="请输入客户姓名" autocomplete="off" class="layui-input">
+                                                <input type="text" name="customer[customer_name]" required  lay-verify="required" placeholder="请输入客户姓名" autocomplete="off" class="layui-input">
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">客户性别</label>
                                             <div class="layui-input-block">
-                                                <select name="row['customer_sex']" lay-verify="required">
+                                                <select name="customer['customer_sex']" lay-verify="required">
                                                         <option value="">请选择客户性别</option>
                                                         <option value="0">男</option>
                                                         <option value="1">女</option>
@@ -70,19 +46,19 @@
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">客户生日</label>
                                             <div class="layui-input-block">
-                                                <input type="text" name="row[customer_birthday]" required readonly lay-verify="required" placeholder="请选择客户生日" id="birthday" class="layui-input">
+                                                <input type="text" name="customer[customer_birthday]" required readonly lay-verify="required" placeholder="请选择客户生日" id="birthday" class="layui-input">
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">客户年龄</label>
                                             <div class="layui-input-block">
-                                                    <input type="text" name="row[customer_age]" id="customer_age" required readonly lay-verify="required" class="layui-input">
+                                                    <input type="text" name="customer[customer_age]" id="customer_age" required readonly lay-verify="required" class="layui-input">
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">工作行业</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['customer_industry']" lay-verify="required">
+                                                    <select name="customer['customer_industry']" lay-verify="required">
                                                             <option value="">请选择</option>
                                                             {foreach $IndustryData as $v}
                                                             <option value="{$v.id}">{$v.name}</option>
@@ -93,7 +69,7 @@
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">职务</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['customer_post']" lay-verify="required">
+                                                    <select name="customer['customer_post']" lay-verify="required">
                                                             <option value="">请选择</option>
                                                             <option value="1">企业主</option>
                                                             <option value="2">总经理</option>
@@ -109,7 +85,7 @@
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">咨询方式</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['Consultation_mode']" lay-verify="required">
+                                                    <select name="Consultation['Consultation_mode']" lay-verify="required">
                                                             <option value="">请选择</option>
                                                             <option value="1">上门来访</option>
                                                             <option value="2">电话咨询</option>
@@ -123,33 +99,36 @@
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">咨询时间</label>
                                             <div class="layui-input-block">
-                                                <input type="text" name="row[Consultation_time]" required readonly lay-verify="required" placeholder="请选择客户生日" id="Consultation_time" class="layui-input">
+                                                <input type="text" name="Consultation[Consultation_time]" required readonly lay-verify="required" placeholder="请选择客户生日" id="Consultation_time" class="layui-input">
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">客户记录类型</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['customer_type']" lay-verify="required">
+                                                    <select name="Consultation['customer_type']" lay-verify="required" lay-filter='customer_type'>
                                                             <option value="">请选择</option>
-                                                            <option value="0">男</option>
-                                                            <option value="1">女</option>
+                                                            <option value="1">市场渠道</option>
+                                                            <option value="2">个人客户</option>
+                                                            <option value="3">企业渠道</option>
+                                                            <option value="4">保险渠道</option>
+                                                            <option value="5">医院渠道</option>
+                                                            <option value="6">老客推荐</option>
+                                                            <option value="7">银行渠道</option>
                                                     </select>
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">客户途径</label>
                                             <div class="layui-input-block">
-                                                <select name="row['customer_channel']" lay-verify="required">
+                                                <select name="Consultation['customer_channel']" id="customer_channel">
                                                         <option value="">请选择</option>
-                                                        <option value="0">男</option>
-                                                        <option value="1">女</option>
                                                 </select>
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">客户星级</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['customer_Star_class']" lay-verify="required">
+                                                    <select name="Consultation['customer_Star_class']" lay-verify="required">
                                                             <option value="">请选择</option>
                                                             <option value="1">一星级</option>
                                                             <option value="2">二星级</option>
@@ -162,27 +141,27 @@
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">客户级别</label>
                                             <div class="layui-input-block">
-                                                <select name="row['customer_level']" lay-verify="required">
+                                                <select name="Consultation['customer_level']" lay-verify="required">
                                                         <option value="">请选择</option>
-                                                        <option value="0">男</option>
-                                                        <option value="1">女</option>
+                                                        {foreach $LevelData as $v}
+                                                        <option value="{$v.id}">{$v.name}</option>
+                                                        {/foreach}
                                                 </select>
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">咨询国别</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['Consultation_country']" lay-verify="required">
+                                                    <select name="Consultation['Consultation_country']" lay-verify="required">
                                                             <option value="">请选择</option>
-                                                            <option value="0">男</option>
-                                                            <option value="1">女</option>
+                                                            <option value="1">中国</option>
                                                     </select>
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">咨询项目</label>
                                             <div class="layui-input-block">
-                                                <select name="row['Consultation_project']" lay-verify="required" lay-filter="Consultation_project">
+                                                <select name="Consultation['Consultation_project']" lay-verify="required" lay-filter="Consultation_project">
                                                         <option value="">请选择</option>
                                                         <option value="1">医疗</option>
                                                         <option value="2">体检</option>
@@ -192,28 +171,35 @@
                                                 </select>
                                             </div>
                                     </div>
-                                    <div class="layui-form-item customer-form-inp">
-                                            <label class="layui-form-label">关注方向</label>
-                                            <div class="layui-input-block">
-                                                    <input type="checkbox" name="row[direction]" title="治疗技术" lay-skin="primary">
-                                                    <input type="checkbox" name="row[direction]" title="药品" lay-skin="primary">
-                                                    <input type="checkbox" name="row[direction]" title="医院" lay-skin="primary">
-                                                    <input type="checkbox" name="row[direction]" title="专家" lay-skin="primary">
-                                                    <input type="checkbox" name="row[direction]" title="服务案例" lay-skin="primary">
-                                                    <input type="checkbox" name="row[direction]" title="费用" lay-skin="primary">
-                                                    <input type="checkbox" name="row[direction]" title="产品" lay-skin="primary">
-                                                    <input type="checkbox" name="row[direction]" title="流程" lay-skin="primary">
-                                                    <input type="checkbox" name="row[direction]" title="保险" lay-skin="primary">
-                                                    <input type="checkbox" name="row[direction]" title="报销" lay-skin="primary">
-                                                    <input type="checkbox" name="row[direction]" title="国外优势" lay-skin="primary">
-                                                    <input type="checkbox" name="row[direction]" title="厚朴方舟优势" lay-skin="primary">
-                                                    <input type="checkbox" name="row[direction]" title="其他" lay-skin="primary">
-                                            </div>
+                                    <div class="layui-form-item customer-form-inp is_shops">
+                                        <label class="layui-form-label">是否到店</label>
+                                        <div class="layui-input-block">
+                                                <input type="checkbox" name="Consultation[is_shop]" title="是否到店">
+                                        </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
+                                            <label class="layui-form-label">关注方向</label>
+                                            <div class="layui-input-block">
+                                                    <input type="checkbox" name="Consultation[zhiliaojishu]" title="治疗技术" lay-skin="primary">
+                                                    <input type="checkbox" name="Consultation[yaopin]" title="药品" lay-skin="primary">
+                                                    <input type="checkbox" name="Consultation[yiyuan]" title="医院" lay-skin="primary">
+                                                    <input type="checkbox" name="Consultation[zhuanjia]" title="专家" lay-skin="primary">
+                                                    <input type="checkbox" name="Consultation[case]" title="服务案例" lay-skin="primary">
+                                                    <input type="checkbox" name="Consultation[feiyong]" title="费用" lay-skin="primary">
+                                                    <input type="checkbox" name="Consultation[chanpin]" title="产品" lay-skin="primary">
+                                                    <input type="checkbox" name="Consultation[liucheng]" title="流程" lay-skin="primary">
+                                                    <input type="checkbox" name="Consultation[baoxian]" title="保险" lay-skin="primary">
+                                                    <input type="checkbox" name="Consultation[baoxiao]" title="报销" lay-skin="primary">
+                                                    <input type="checkbox" name="Consultation[guowaiyoushi]" title="国外优势" lay-skin="primary">
+                                                    <input type="checkbox" name="Consultation[hopeyoushi]" title="厚朴方舟优势" lay-skin="primary">
+                                                    <input type="checkbox" name="Consultation[qita]" title="其他" lay-skin="primary">
+                                            </div>
+                                    </div>
+
+                                    <div class="layui-form-item customer-form-inp ">
                                             <label class="layui-form-label">备注</label>
                                             <div class="layui-input-block">
-                                                    <textarea name="row[remark]" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                                    <textarea name="Consultation[remark]" placeholder="请输入内容" class="layui-textarea"></textarea>
                                             </div>
                                     </div>
                                 </div>
@@ -225,35 +211,42 @@
                                 <div class="layui-form-item customer-form-inp">
                                         <label class="layui-form-label">与咨询客户关系</label>
                                         <div class="layui-input-block">
-                                                <select name="row['Contacts_relationship']" lay-verify="required">
+                                                <select name="Contacts['Contacts_relationship']"  id="Contacts_relationship" lay-verify="required">
                                                         <option value="">请选择</option>
-                                                        <option value="0">男</option>
-                                                        <option value="1">女</option>
+                                                        <option value="1">父母</option>
+                                                        <option value="2">子女</option>
+                                                        <option value="3">兄弟</option>
+                                                        <option value="4">兄妹</option>
+                                                        <option value="5">姐弟</option>
+                                                        <option value="6">姐妹</option>
+                                                        <option value="7">配偶</option>
+                                                        <option value="8">朋友</option>
+                                                        <option value="9">其他</option>
                                                 </select>
                                         </div>
                                 </div>
                                 <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                         <label class="layui-form-label">联系电话</label>
                                         <div class="layui-input-block">
-                                                <input type="text" name="row[Contacts_phone]" required  lay-verify="required"  lay-verify="Contacts_phone" placeholder="请输入联系电话"  id="Contacts_phone" class="layui-input">
+                                                <input type="text" name="Contacts[Contacts_phone]" required  lay-verify="required"  lay-verify="Contacts_phone" placeholder="请输入联系电话"  id="Contacts_phone" class="layui-input">
                                         </div>
                                 </div>
                                 <div class="layui-form-item customer-form-inp">
                                         <label class="layui-form-label">电子邮箱</label>
                                         <div class="layui-input-block">
-                                                <input type="text" name="row[Contacts_email]" required  lay-verify="required" placeholder="请输入电子邮箱"  class="layui-input">
+                                                <input type="text" name="Contacts[Contacts_email]" required  id="Contacts_email" lay-verify="required" placeholder="请输入电子邮箱"  class="layui-input">
                                         </div>
                                 </div>
                                 <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                         <label class="layui-form-label">微信号</label>
                                         <div class="layui-input-block">
-                                                <input type="text" name="row[Contacts_weChat]" required  lay-verify="required" placeholder="请输入微信号"  class="layui-input">
+                                                <input type="text" name="Contacts[Contacts_weChat]" required id="Contacts_weChat" lay-verify="required" placeholder="请输入微信号"  class="layui-input">
                                         </div>
                                 </div>
                                 <div class="layui-form-item customer-form-inp">
                                         <label class="layui-form-label">国家</label>
                                         <div class="layui-input-block">
-                                                <select name="row['Contacts_country']" lay-verify="required">
+                                                <select name="Contacts['Contacts_country']" id="Contacts_country" lay-verify="required">
                                                         <option value="">请选择</option>
                                                         <option value="中国">中国</option>
                                                 </select>
@@ -262,7 +255,7 @@
                                 <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                         <label class="layui-form-label">省份</label>
                                         <div class="layui-input-block">
-                                                <select name="row['Contacts_province']"  id="Contacts_province" lay-verify="required">
+                                                <select name="Contacts['Contacts_province']"  id="Contacts_province" lay-verify="required">
                                                         <option value="">请选择</option>
                                                 </select>
                                         </div>
@@ -270,7 +263,7 @@
                                 <div class="layui-form-item customer-form-inp">
                                         <label class="layui-form-label">城市</label>
                                         <div class="layui-input-block">
-                                                <select name="row['Contacts_city']" id="Contacts_city" lay-verify="required">
+                                                <select name="Contacts['Contacts_city']" id="Contacts_city" lay-verify="required">
                                                         <option value="">请选择</option>
                                                 </select>
                                         </div>
@@ -278,17 +271,36 @@
                                 <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                         <label class="layui-form-label">邮编</label>
                                         <div class="layui-input-block">
-                                                <input type="text" name="row[Contacts_zip_code]" required id="Contacts_zip_code" lay-verify="required" placeholder="请输入邮编"  class="layui-input">
+                                                <input type="text" name="Contacts[Contacts_zip_code]" required id="Contacts_zip_code" lay-verify="required" placeholder="请输入邮编"  class="layui-input">
                                         </div>
                                 </div>
                                 <div class="layui-form-item customer-form-inp">
                                         <label class="layui-form-label">收件地址</label>
                                         <div class="layui-input-block">
-                                                <textarea name="row[Contacts_address]" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                                <textarea name="Contacts[Contacts_address]" placeholder="请输入内容" id="Contacts_address" class="layui-textarea"></textarea>
                                         </div>
                                 </div>
+                                <div style="overflow:hidden;clear:both">
+                                        <table class="layui-table" id="contacts-table" style="display:none">
+                                                <thead>
+                                                        <tr>
+                                                           <th>关系</th>
+                                                           <th>电话</th>
+                                                           <th>邮箱</th>
+                                                           <th>国家</th>
+                                                           <th>省份</th>
+                                                           <th>城市</th>
+                                                           <th>操作</th>
+                                                        </tr>   
+                                                </thead>
+                                                <tbody id="tableData">
+
+                                                </tbody>
+                                        </table>
+                                </div>
+                                        
                                 <p class="contacts—more">
-                                    <a href="" class="layui-btn layui-btn-primary">添加联系人</a>
+                                    <a href="javascript:;" id="addContacts" class="layui-btn layui-btn-primary">添加联系人</a>
                                 </p>
                             </div>
                         </div>
@@ -299,13 +311,18 @@
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">服务环节</label>
                                             <div class="layui-input-block">
-                                                    <input type="text" name="row[Process_link]"  class="layui-input">
+                                                <select name="row['Process_link']" lay-verify="required">
+                                                        <option value="请选择"></option>
+                                                        <option value="1">咨询环节</option>
+                                                </select>
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">具体节点</label>
                                             <div class="layui-input-block">
-                                                    <input type="text" name="row[Process_node]"  class="layui-input" placeholder="请选择节点">
+                                                    <select name="row['Process_node']" lay-verify="required">
+                                                        <option value="请选择"></option>
+                                                    </select>
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp">
@@ -335,49 +352,58 @@
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">与咨询客户关系</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['Patient_relationship']" lay-verify="required">
+                                                    <select name="Patient['Patient_relationship']" lay-verify="required">
                                                             <option value="">请选择</option>
-                                                            <option value="0">男</option>
-                                                            <option value="1">女</option>
+                                                            <option value="1">父母</option>
+                                                            <option value="2">子女</option>
+                                                            <option value="3">兄弟</option>
+                                                            <option value="4">兄妹</option>
+                                                            <option value="5">姐弟</option>
+                                                            <option value="6">姐妹</option>
+                                                            <option value="7">配偶</option>
+                                                            <option value="8">朋友</option>
+                                                            <option value="9">其他</option>
                                                     </select>
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">疾病大类</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['Patient_major_diseases']" lay-verify="required">
+                                                    <select name="Patient['Patient_major_diseases']" lay-verify="required" lay-filter="Patient_major_diseases" >
                                                             <option value="">请选择</option>
-                                                            <option value="0">男</option>
-                                                            <option value="1">女</option>
+                                                            {foreach $diseaseData as $v}
+                                                                <option value="{$v.id}">{$v.name}</option>
+                                                            {/foreach}
                                                     </select>
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">疾病小类</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['Patient_disease_subgroup']" lay-verify="required">
+                                                    <select name="Patient['Patient_disease_subgroup']" lay-verify="required" lay-filter="Patient_disease_subgroup" id="Patient_disease_subgroup">
                                                             <option value="">请选择</option>
-                                                            <option value="0">男</option>
-                                                            <option value="1">女</option>
+
                                                     </select>
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">疾病名称</label>
                                             <div class="layui-input-block">
-                                                    <input type="text" name="row[Patient_name_of_disease]"  class="layui-input">
+                                                    <select name="Patient['Patient_name_of_disease']" lay-verify="required"  id="Patient_name_of_disease">
+                                                        <option value="">请选择</option>
+                                                    </select>
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">患者名称</label>
                                             <div class="layui-input-block">
-                                                    <input type="text" name="row[Patient_name]"  class="layui-input" placeholder="请输入患者名称">
+                                                    <input type="text" name="Patient[Patient_name]"  class="layui-input" placeholder="请输入患者名称">
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">患者性别</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['Patient_sex']" lay-verify="required">
+                                                    <select name="Patient['Patient_sex']" lay-verify="required">
                                                             <option value="">请选择</option>
                                                             <option value="0">男</option>
                                                             <option value="1">女</option>
@@ -387,19 +413,19 @@
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">患者生日</label>
                                             <div class="layui-input-block">
-                                                    <input type="text" name="row[Patient_birthday]" id="Patient_birthday" class="layui-input" placeholder="请输入患者名称">
+                                                    <input type="text" name="Patient[Patient_birthday]" id="Patient_birthday" class="layui-input" placeholder="请输入患者名称">
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right" >
                                             <label class="layui-form-label">患者年龄</label>
                                             <div class="layui-input-block">
-                                                    <input type="text" name="row[Patient_age]" class="layui-input" >
+                                                    <input type="text" name="Patient[Patient_age]" readonly id="Patient_age" class="layui-input" >
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">工作行业</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['Patient_industry']" lay-verify="required">
+                                                    <select name="Patient['Patient_industry']" lay-verify="required">
                                                             <option value="">请选择</option>
                                                             {foreach $IndustryData as $v}
                                                             <option value="{$v.id}">{$v.name}</option>
@@ -410,7 +436,7 @@
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">职务</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['Patient_post']" lay-verify="required">
+                                                    <select name="Patient['Patient_post']" lay-verify="required">
                                                             <option value="">请选择</option>
                                                             <option value="1">企业主</option>
                                                             <option value="2">总经理</option>
@@ -426,17 +452,18 @@
                                     <div class="layui-form-item customer-form-inp" >
                                             <label class="layui-form-label">目标医院</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['Patient_hos']" lay-verify="required">
+                                                    <select name="Patient['Patient_hos']" lay-verify="required" lay-search>
                                                             <option value="">请选择</option>
-                                                            <option value="0">男</option>
-                                                            <option value="1">女</option>
+                                                            {foreach $hosData as $v}
+                                                            <option value="{$v.id}">{$v.name}</option>
+                                                            {/foreach}
                                                     </select>
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right" >
                                             <label class="layui-form-label">目标专家</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['Patient_doc']" lay-verify="required">
+                                                    <select name="Patient['Patient_doc']" lay-verify="required">
                                                             <option value="">请选择</option>
                                                             <option value="0">男</option>
                                                             <option value="1">女</option>
@@ -446,13 +473,13 @@
                                     <div class="layui-form-item customer-form-inp" >
                                             <label class="layui-form-label">目标时间</label>
                                             <div class="layui-input-block">
-                                                    <input type="text" name="row[Patient_target_time]" id="Patient_target_time" class="layui-input" >
+                                                    <input type="text" name="Patient[Patient_target_time]" id="Patient_target_time" class="layui-input" >
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">疾病描述</label>
                                             <div class="layui-input-block">
-                                                    <textarea name="row[Patient_desc]" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                                    <textarea name="Patient[Patient_desc]" placeholder="请输入内容" class="layui-textarea"></textarea>
                                             </div>
                                     </div>
                                 </div>
@@ -464,23 +491,31 @@
                                     <div class="layui-form-item customer-form-inp" style="width:100%;">
                                             <label class="layui-form-label">与咨询客户关系</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['Physical_examination_relationship']" lay-verify="required">
+                                                    <select name="Physical['Physical_examination_relationship']" lay-verify="required">
                                                             <option value="">请选择</option>
-                                                            <option value="0">男</option>
-                                                            <option value="1">女</option>
+                                                            <option value="">请选择</option>
+                                                            <option value="1">父母</option>
+                                                            <option value="2">子女</option>
+                                                            <option value="3">兄弟</option>
+                                                            <option value="4">兄妹</option>
+                                                            <option value="5">姐弟</option>
+                                                            <option value="6">姐妹</option>
+                                                            <option value="7">配偶</option>
+                                                            <option value="8">朋友</option>
+                                                            <option value="9">其他</option>
                                                     </select>
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">患者名称</label>
                                             <div class="layui-input-block">
-                                                    <input type="text" name="row[Physical_examination_name]"  class="layui-input" placeholder="请输入患者名称">
+                                                    <input type="text" name="Physical[Physical_examination_name]"  class="layui-input" placeholder="请输入患者名称">
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">患者性别</label>
                                             <div class="layui-input-block">
-                                                    <select name="row['Physical_examination_sex']" lay-verify="required">
+                                                    <select name="Physical['Physical_examination_sex']" lay-verify="required">
                                                             <option value="">请选择</option>
                                                             <option value="0">男</option>
                                                             <option value="1">女</option>
@@ -490,60 +525,66 @@
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">患者生日</label>
                                             <div class="layui-input-block">
-                                                    <input type="text" name="row[Physical_examination_birthday]" id="Physical_examination_birthday" class="layui-input" placeholder="请输入患者名称">
+                                                    <input type="text" name="Physical[Physical_examination_birthday]" id="Physical_examination_birthday" class="layui-input" placeholder="请输入患者生日">
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right" >
                                             <label class="layui-form-label">患者年龄</label>
                                             <div class="layui-input-block">
-                                                    <input type="text" name="row[Physical_examination_age]" class="layui-input" >
+                                                    <input type="text" name="Physical[Physical_examination_age]" readonly class="layui-input" >
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">目标医院</label>
                                             <div class="layui-input-block">
-                                                    <input type="text" name="row[Physical_examination_hos]"  class="layui-input" placeholder="请输入目标医院">
+                                                    <select name="Physical['Physical_examination_hos']" lay-verify="required" lay-search>
+                                                            <option value="">请选择</option>
+                                                            {foreach $hosData as $v}
+                                                            <option value="{$v.id}">{$v.name}</option>
+                                                            {/foreach}
+                                                    </select>
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
                                             <label class="layui-form-label">目标时间</label>
                                             <div class="layui-input-block">
-                                                    <input type="text" name="row[Physical_examination_time]" id="Physical_examination_time"  class="layui-input" placeholder="请输入目标医院">
+                                                    <input type="text" name="Physical[Physical_examination_time]" id="Physical_examination_time"  class="layui-input" placeholder="请输入目标医院">
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">关注项目</label>
                                             <div class="layui-input-block">
-                                                    <input type="checkbox" name="row[Physical_examination_project]"  lay-skin="primary" title="呼吸系统">
-                                                    <input type="checkbox" name="row[Physical_examination_project]"  lay-skin="primary" title="消化系统">
-                                                    <input type="checkbox" name="row[Physical_examination_project]"  lay-skin="primary" title="神经系统">
-                                                    <input type="checkbox" name="row[Physical_examination_project]"  lay-skin="primary" title="循环系统">
-                                                    <input type="checkbox" name="row[Physical_examination_project]"  lay-skin="primary" title="内分泌系统">
-                                                    <input type="checkbox" name="row[Physical_examination_project]"  lay-skin="primary" title="生殖系统">
-                                                    <input type="checkbox" name="row[Physical_examination_project]"  lay-skin="primary" title="泌尿系统">
-                                                    <input type="checkbox" name="row[Physical_examination_project]"  lay-skin="primary" title="运动系统">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project]"  lay-skin="primary" title="呼吸系统">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project]"  lay-skin="primary" title="消化系统">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project]"  lay-skin="primary" title="神经系统">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project]"  lay-skin="primary" title="循环系统">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project]"  lay-skin="primary" title="内分泌系统">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project]"  lay-skin="primary" title="生殖系统">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project]"  lay-skin="primary" title="泌尿系统">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project]"  lay-skin="primary" title="运动系统">
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp customer-form-inp-right">
-                                            <label class="layui-form-label">关注项目</label>
+                                            <label class="layui-form-label">必检项目</label>
                                             <div class="layui-input-block" style="min-height: 96px;">
-                                                    <input type="checkbox" name="row[Physical_examination_project2]"  lay-skin="primary" title="pet-ct">
-                                                    <input type="checkbox" name="row[Physical_examination_project2]"  lay-skin="primary" title="肠镜">
-                                                    <input type="checkbox" name="row[Physical_examination_project2]"  lay-skin="primary" title="胃镜">
-                                                    <input type="checkbox" name="row[Physical_examination_project2]"  lay-skin="primary" title="肿瘤标记物">
-                                                    <input type="checkbox" name="row[Physical_examination_project2]"  lay-skin="primary" title="肝功能">
-                                                    <input type="checkbox" name="row[Physical_examination_project2]"  lay-skin="primary" title="妇科">
-                                                    <input type="checkbox" name="row[Physical_examination_project2]"  lay-skin="primary" title="男科">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project2]"  lay-skin="primary" title="pet-ct">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project2]"  lay-skin="primary" title="肠镜">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project2]"  lay-skin="primary" title="胃镜">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project2]"  lay-skin="primary" title="肿瘤标记物">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project2]"  lay-skin="primary" title="肝功能">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project2]"  lay-skin="primary" title="妇科">
+                                                    <input type="checkbox" name="Physical[Physical_examination_project2]"  lay-skin="primary" title="男科">
                                             </div>
                                     </div>
                                     <div class="layui-form-item customer-form-inp">
                                             <label class="layui-form-label">疾病描述</label>
                                             <div class="layui-input-block">
-                                                    <textarea name="row[Physical_examination_desc]" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                                    <textarea name="Physical[Physical_examination_desc]" placeholder="请输入内容" class="layui-textarea"></textarea>
                                             </div>
                                     </div>
                                 </div>
                         </div>
+                        <input type="hidden" id="is_PhysicalExamination" name="is_PhysicalExamination" value="">
                         <p style="text-align:center">
                                 <a name="Submit"></a>
                                 <a class="layui-btn" lay-submit lay-filter="*" id="submit-btn"><i class='fa fa-spinner' style='padding-right:5px'></i>提交</a>
