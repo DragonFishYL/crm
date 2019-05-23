@@ -15,3 +15,24 @@
 .customer-list-p2 span:nth-child(1) a{color: #666;}
 .customer-list-p2 span:nth-child(2){padding-left: 1%}
 .customer-btn-p{text-align: right;padding-bottom:15px; }
+.shortcut-navigation{width: 10%;float: left;position: fixed;-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);}
+.customer-form-box{width: 88%;margin-left: 12%;float: left;}
+.shortcut-navigation-sp{font-size: 18px;color: #333;display: block;margin: 15px;padding-bottom: 10px;border-bottom: 1px solid #dcdcdc}
+.customer-form-nav{margin-top: 25px;}
+.shortcut-navigation ul{overflow: hidden;padding: 0 15px;}
+.shortcut-navigation ul li{font-size: 14px;color: #666;padding-bottom: 15px;}
+.shortcut-navigation ul li a:hover{color: #18bc9c}
+.a-lick{color: #18bc9c}
+.customer-form-com{margin-bottom: 25px;-webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);padding: 15px;overflow: -webkit-paged-y;}
+.customer-form-com .p1{font-size: 16px;color: #333;padding: 5px 0;border-bottom: 1px solid #dcdcdc;margin-bottom: 10px;}
+.customer-form-com label{width: 100%!important;text-align: left!important;padding-left: 0!important;font-size: 15px!important;margin-bottom: 0!important}
+.customer-form-com .layui-input-block{margin-left: 0!important}
+.customer-form-inp{width: 48%;float: left;clear: none!important}
+.customer-form-inp-right{float: right;}
+.layui-form-select dl{top:80px!important}
+.layui-form-select .layui-edge{top: 76%!important;}
+.contacts—more{text-align: center;padding: 20px 0;clear: both;}
+.contacts—more a{color: #333;}
+.layui-form-select dl{height: min-content}
+.Physical-box{display: none;}
+.is_shops .layui-icon-ok{height: 30px!important;}
